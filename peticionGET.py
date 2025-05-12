@@ -1,6 +1,6 @@
 import requests
 
-def peticion_get():
+def comprobar_estado():
     try:
         # Realizar la petición GET a la API
         respuesta = requests.get('https://api.ejemplo.com/estado')
@@ -16,7 +16,7 @@ def peticion_get():
 
 def interactuar_con_api():
     while True:
-        mensaje = str(input("Escriba un código: "))
+        mensaje = str(input("Escriba código: "))
 
         if mensaje == '200':
             print("OK")
@@ -26,7 +26,7 @@ def interactuar_con_api():
 
         try:
             respuesta = requests.post(
-                'http://192.168.1.17:5101/enviar',
+                'https://api.ejemplo.com/estado',
                 json={'mensaje': mensaje}
             )
             respuesta.raise_for_status()
@@ -40,5 +40,5 @@ def interactuar_con_api():
             print("La respuesta no está en formato JSON.")
 
 if __name__ == '__main__':
-    peticion_get()
+    comprobar_estado()
     interactuar_con_api()
